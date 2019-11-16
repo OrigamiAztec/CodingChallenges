@@ -22,13 +22,17 @@ u0, v0, w0 = 0, 1, 1.05
 # setting max time and number of points
 t_max, n = 100, 1000
 
+#defining function from lorenz attractors equations
 def f(state, t):
   x, y, z = state  # unpack the state vector
   return sigma * (y - x), x * (rho - z) - y, x * y - beta * z  # derivatives
 
+# setting vector init as 1, 1, 1
 state0 = [1.0, 1.0, 1.0]
-t = np.arange(0.0, 40.0, 0.01)
+# setting t to go from 0 to 40, at change in t iterations of .1
+t = np.arange(0.0, 100.0, 0.01)
 
+# solving for each iteration of states usign odeInt function from scipy
 states = odeint(f, state0, t)
 
 fig = plt.figure()
